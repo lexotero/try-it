@@ -37,6 +37,7 @@ class Speaker(BaseModel):
     twitter_profile = models.CharField(max_length=255, blank=True)
     facebook_profile = models.CharField(max_length=255, blank=True)
     linked_in_profile = models.CharField(max_length=255, blank=True)
+    company = models.ForeignKey(Company, blank=True, null=True)
 
     def __str__(self):
         return "{} {}".format(self.first_name, self.last_name)

@@ -7,7 +7,11 @@ from tryit.models import BaseModel
 
 
 class Edition(BaseModel):
-    name = models.CharField(max_length=255, default=datetime.date.today().year)
+    name = models.CharField(
+        max_length=255,
+        default=datetime.date.today().year,
+        unique=True
+    )
 
     def __str__(self):
         return self.name

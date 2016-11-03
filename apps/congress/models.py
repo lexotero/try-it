@@ -12,6 +12,15 @@ class Edition(BaseModel):
         default=datetime.date.today().year,
         unique=True
     )
+    description = HTMLField(blank=True)
+
+    start = models.DateField(blank=True, null=True)
+    end = models.DateField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Track(models.Model):
     name = models.CharField(max_length=255, unique=True)
     description = HTMLField(blank=True)

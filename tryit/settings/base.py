@@ -126,3 +126,10 @@ LOGGING = {
         }
     }
 }
+
+# django tinymce configuration
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "table,paste,searchreplace",
+    'theme': "advanced",
+    'custom_undo_redo_levels': 10,
+}

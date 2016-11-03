@@ -45,3 +45,29 @@ class Speaker(BaseModel, SocialProfiles):
 
     def __str__(self):
         return "{} {}".format(self.first_name, self.last_name)
+
+
+class ActivityFormat(BaseModel):
+    name = models.CharField(max_length=255, unique=True)
+    description = HTMLField(blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Activity(BaseModel):
+    title = models.CharField(max_length=255)
+    description = HTMLField(blank=True)
+    format = models.ForeignKey(ActivityFormat)
+    tags = models.ManyToManyField(Tag)
+
+    speakers = models.ManyToManyField(Speaker)
+    companies = models.ManyToManyField(Company)
+
+    edition = models.ForeignKey(Edition)
+    track = models.ForeignKey(Track, blank=True, null=True)
+    start = models.DateTimeField()
+    end = models.DateTimeField()
+
+    def __str__(self):
+        return self.title
